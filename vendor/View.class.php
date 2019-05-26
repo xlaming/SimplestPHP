@@ -26,7 +26,7 @@ class View {
 
     /**
      * Get contents to be rendered
-     * Template directory should be separated by . (dot) not / (slash)
+     * Template directory should be separated by / (slash)
      * 
      * @param  string $page [Template dir]
      * @param  array $args [Arguments]
@@ -48,7 +48,7 @@ class View {
 
     /**
      * Render template
-     * Template directory should be separated by . (dot) not / (slash)
+     * Template directory should be separated by / (slash)
      * 
      * @param  string $page [Template dir]
      * @param  array $args [Arguments]
