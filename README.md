@@ -4,6 +4,13 @@
 ### Learning
 - With SimplestPHP your codes are clean, very cool and you can easily remember the class names, since everything is made with the maximum of concern to being easy remember later. Documentation is available in [SimplestPHP.xyz](https://simplestphp.xyz)
 
+### Installation
+1. Download on your computer
+2. Extract the files
+3. Put all on your public_html
+4. Edit the file /app/config.php
+6. It's alive!
+
 ### Requires
 - PHP 7.0+
 - MySQL 5.5+
