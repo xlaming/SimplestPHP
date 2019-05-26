@@ -1,0 +1,20 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ index.php [L,QSA]
+
+# Make it safe
+ServerSignature Off
+Header unset X-Powered-By
+
+# Allow iframes
+Header unset X-Frame-Options
+
+# Deny access to the core
+RewriteRule ^app/.*$ - [F,L,NC]
+RewriteRule ^vendor/.*$ - [F,L,NC]
+
+# Deny access to .conf files
+<Files ~ "\.(conf)$">
+	deny from all
+</Files>
