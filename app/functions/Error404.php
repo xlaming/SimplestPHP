@@ -5,10 +5,6 @@ use Vendor\View;
 
 class Error404 {
     /**
-     * Cache var
-     */
-    protected $user;
-    /**
      * Allowed params after the slash
      * @var array
      */
