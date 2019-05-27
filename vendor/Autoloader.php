@@ -254,12 +254,13 @@ class App {
      * @return string
      */
     public static function newSession(string $name, string $value): bool {
-        $dir = DIRECTORY . SEPARATOR . 'app' . SEPARATOR . 'sessions' . SEPARATOR . $name . '.txt';
+        $dir  = DIRECTORY . SEPARATOR . 'app' . SEPARATOR . 'sessions';
+        $file = SEPARATOR . $name . '.txt';
         if (!is_writable($dir)) {
-            die('Sessions folder is not writeable, try chmod 664');
+            chmod($dir, 0644);
         }
         return file_put_contents(
-            $dir, 
+            $dir . $file, 
             strip_tags($value)
         );
     }
@@ -271,13 +272,14 @@ class App {
      * @return mixed
      */
     public static function getSession(string $name) {
-        $dir = DIRECTORY . SEPARATOR . 'app' . SEPARATOR . 'sessions' . SEPARATOR . $name . '.txt';
-        if (!is_readble($dir)) {
-            die('Sessions folder is not readable, try chmod 664');
-        } else if (!file_exists($dir)) {
+        $dir  = DIRECTORY . SEPARATOR . 'app' . SEPARATOR . 'sessions';
+        $file = SEPARATOR . $name . '.txt';
+        if (!is_readable($dir)) {
+            chmod($dir, 0644);
+        } else if (!file_exists($dir . $file)) {
             return null;
         }
-        return file_get_contents($dir);
+        return file_get_contents($dir . $file);
     }
     
     /**
