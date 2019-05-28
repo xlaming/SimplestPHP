@@ -1,0 +1,12 @@
+Current version:1.2
+
+History:
+
+=> Version 1.2
+* Add a new fix for minifying textareas, it stops breaking your code output
+
+=> Version 1.1
+* Added auto chmod 644 to sessions folder
+
+=> Version 1.0
+* Released.
