@@ -14,7 +14,9 @@ class View {
         '/<!--(.|\s)*?-->/',
         
     ];
-    /* New HTML characters */
+    /**
+     * New HTML characters
+     */
     const MINIFY_NEW = [
         '',
         '',
@@ -23,10 +25,26 @@ class View {
         '<',
         '',
     ];
+    /**
+     * Old textarea characters
+     */
+    const FIX_TEXTAREA = [
+        "\n", 
+        "\r", 
+        " ",
+    ];
+    /**
+     * New textarea characters
+     */
+    const FIX_TEXTNEW = [
+        "&#10;",
+        "&#13;",
+        "&#160;",
+    ];
 
     /**
      * Get contents to be rendered
-     * Template directory should be separated by / (slash)
+     * Template directory should be separated by . (dot) not / (slash)
      * 
      * @param  string $page [Template dir]
      * @param  array $args [Arguments]
@@ -48,7 +66,7 @@ class View {
 
     /**
      * Render template
-     * Template directory should be separated by / (slash)
+     * Template directory should be separated by . (dot) not / (slash)
      * 
      * @param  string $page [Template dir]
      * @param  array $args [Arguments]
@@ -95,6 +113,20 @@ class View {
      */
     public static function plain(string $page) {
         print $page;
+    }
+    
+    /**
+     * Prints textarea with minify enabled
+     * 
+     * @param  string $page [Plain text]
+     * @return string
+     */
+    public static function TextArea(string $page): string {
+        if (MINIFY_DATA) {
+            return str_replace(self::FIX_TEXTAREA, self::FIX_TEXTNEW, $page);
+        }
+        
+        return $page;
     }
 
     /**
